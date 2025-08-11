@@ -1,4 +1,4 @@
-PKG := is_instance
+PKG := is-instance
 
 build:
 	pip install build

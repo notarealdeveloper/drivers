@@ -1,4 +1,4 @@
-# is_instance
+# is-instance
 
 A better isinstance for python.
 
