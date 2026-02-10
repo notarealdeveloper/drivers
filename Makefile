@@ -1,4 +1,4 @@
-PKG := is-instance
+PKG := drivers
 
 build:
 	pip install build

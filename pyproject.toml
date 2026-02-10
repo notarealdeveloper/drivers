@@ -1,22 +1,19 @@
 [project]
-name = "is-instance"
-version = "0.0.16"
+name = "drivers"
+version = "0.1.0"
 authors = [
     { name="Jason Wilkes", email="notarealdeveloper@gmail.com" },
-    { name="Michael I Chen", email="michael.chen.0@gmail.com" },
-    { name="Hudson Cooper", email="hncooper96@gmail.com" },
 ]
-description = "A better isinstance for python"
+description = "Web drivers"
 dependencies = [
-    "callable_module",
-]
-
-[project.optional-dependencies]
-develop = [
+    "bs4",
+    "requests",
+    "selenium",
     "build",
     "pytest",
 ]
 
 [project.urls]
-source = "https://github.com/notarealdeveloper/is-instance"
-download = "https://pypi.org/project/is-instance/#files"
+source = "https://github.com/notarealdeveloper/drivers"
+download = "https://pypi.org/project/drivers/#files"
+
