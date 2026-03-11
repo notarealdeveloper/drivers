@@ -1,4 +1,6 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
+
+__all__ = ['web']
 
 import os
 import bs4
@@ -8,7 +10,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 
-class Browser:
+class web:
     USER_AGENT = (
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) "
         "AppleWebKit/537.36 (KHTML, like Gecko) "
