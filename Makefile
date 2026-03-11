@@ -6,7 +6,7 @@ PYTEST := $(PYTHON) -m pytest
 build: with-build
 	$(PYTHON) -m build
 
-install:
+install: build
 	$(PIP) install dist/*.tar.gz
 
 develop:
