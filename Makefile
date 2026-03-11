@@ -1,4 +1,4 @@
-PKG := drivers
+PKG    := drivers
 PYTHON := python
 PIP    := $(PYTHON) -m pip
 PYTEST := $(PYTHON) -m pytest
