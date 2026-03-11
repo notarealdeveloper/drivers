@@ -1,5 +1,5 @@
 import drivers
 
 def test_compat():
-    browser = drivers.Chrome()
+    browser = drivers.web()
     browser.get("https://google.com")

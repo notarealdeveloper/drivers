@@ -7,8 +7,9 @@ Web drivers
 
 ```python
 import drivers
-browser = drivers.Chrome()
+browser = drivers.web()
 browser.get("https://google.com")
 
-# add more usage examples here
+# tab complete on the browser
+# object for a good time...
 ```
