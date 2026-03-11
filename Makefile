@@ -1,35 +1,37 @@
 PKG := drivers
+PYTHON := python
+PIP    := $(PYTHON) -m pip
+PYTEST := $(PYTHON) -m pytest
 
-build:
-	pip install build
-	python -m build
+build: with-build
+	$(PYTHON) -m build
 
-install: clean build
-	pip install dist/*.tar.gz
-
-uninstall:
-	pip uninstall $(PKG)
+install:
+	$(PIP) install dist/*.tar.gz
 
 develop:
-	pip install -e .[develop]
+	$(PIP) install -e .
 
-check:
-	pip install pytest
-	pytest -v tests/
+check: with-pytest
+	$(PYTEST) -v tests
+
+uninstall:
+	$(PIP) uninstall $(PKG)
 
 clean:
-	rm -rfv dist/ build/ src/*.egg-info
+	@rm -rvf dist/ build/ src/*.egg-info
 
-push-test:
-	pip install twine
-	python -m twine upload --repository testpypi dist/*
+push-test: with-twine
+	$(PYTHON) -m twine upload --repository testpypi dist/*
 
 pull-test:
-	pip install -i https://test.pypi.org/simple/ $(PKG)
+	$(PIP) install -i https://test.pypi.org/simple/ $(PKG)
 
-push-prod:
-	pip install twine
-	python -m twine upload dist/*
+push-prod: with-twine
+	$(PYTHON) -m twine upload dist/*
 
 pull-prod:
-	pip install $(PKG)
+	$(PIP) install $(PKG)
+
+with-%:
+	@$(PYTHON) -c 'import $*' &>/dev/null || $(PIP) install $*
