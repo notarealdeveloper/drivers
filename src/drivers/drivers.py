@@ -46,7 +46,10 @@ class web:
             self.options.add_argument("--start-maximized")
             self.options.add_argument(f"--user-agent={user_agent}")
 
-            if self.as_self:
+            if as_self:
+                # This is ALMOST RIGHT but every website hates you.
+                # Need to figure out how to lie better.
+                # To be continued.
                 self.options.add_argument(f"--user-data-dir={chrome_profile}")
                 self.options.add_argument(f"--profile-directory=Default")
 
