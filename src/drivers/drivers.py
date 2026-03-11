@@ -17,7 +17,8 @@ class web:
         "Chrome/35.0.1916.47 Safari/537.36"
     )
 
-    def __init__(self, type="chrome", headless=False, incognito=True, user_agent=USER_AGENT):
+    def __init__(self, type="chrome", headless=False, incognito=True, as_self=True, user_agent=USER_AGENT):
+
         self.type = type
 
         if type == "chrome":
@@ -32,6 +33,10 @@ class web:
                     "or add it to PATH."
                 )
 
+            from pathlib import Path
+            home = Path.home()
+            chrome_profile = home / ".config/google-chrome"
+
             self.options = Options()
             # New headless mode on modern Chrome
             if headless:
@@ -40,6 +45,10 @@ class web:
                 self.options.add_argument("--incognito")
             self.options.add_argument("--start-maximized")
             self.options.add_argument(f"--user-agent={user_agent}")
+
+            if self.as_self:
+                self.options.add_argument(f"--user-data-dir={chrome_profile}")
+                self.options.add_argument(f"--profile-directory=Default")
 
             self.service = Service(executable_path=driver_path)
             self.driver = Driver(service=self.service, options=self.options)
